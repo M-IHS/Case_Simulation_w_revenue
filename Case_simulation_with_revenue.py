@@ -3,6 +3,15 @@ import pandas as pd
 import base64
 import plotly.graph_objects as go
 
+# --- Password Gate ---
+st.markdown("## 🔒 Secure Access")
+
+password = st.text_input("Enter access code:", type="password")
+
+if password != "Bariatrics":
+    st.warning("Please enter the correct access code to continue.")
+    st.stop()
+    
 # Page config
 st.set_page_config(page_title="Theatre Case Mix Simulation", layout="wide")
 
@@ -17,6 +26,18 @@ logo_base64 = get_base64_image("logo.png")  # make sure logo.png is in the same 
 # Top bar CSS
 st.markdown("""
     <style>
+        .stApp {
+            background: linear-gradient(
+                180deg,
+                #f4f7ff 0%,
+                #e4ecff 50%,
+                #dce7ff 100%
+            );
+        }
+
+        [data-testid="stHeader"] {
+            background: rgba(0,0,0,0);
+        }
         .top-bar {
             background-color: #1010EB;  /* Bright blue */
             padding: 10px 20px;
